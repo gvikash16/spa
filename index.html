@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SPA</title>
+	<script src="contact.js"></script>
+	<script src="home.js"></script>
+	<script>
+		// checkState();
+		function checkState(old){
+			console.log("old", old);
+			if(window.location.hash.substr(window.location.hash.indexOf('#')+2)==='home'){
+				console.log("home", "home");
+
+			}else if(window.location.hash.substr(window.location.hash.indexOf('#')+2)==='contact'){
+				console.log("contact", "contact");
+
+			}
+		}
+		function hashChange(){
+			window.onhashchange = checkState;
+		}
+
+		function init(){
+			var elem = document.getElementsByTagName('a');
+			for(var i=0;i<elem.length;i++){
+				elem[i].addEventListener('click', hashChange);				
+			}
+		}
+		document.addEventListener("DOMContentLoaded", init, false);
+	</script>
+</head>
+<body>
+	<h1>SPA</h1>
+	<div id="home"><a href="#/home">Home</a></div>	
+	<div id="contact"><a href="#/contact">Contact</a></div>	
+</body>
+</html>
